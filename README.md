@@ -1,4 +1,4 @@
-# Ankesh Kumar - Personal Portfolio & Resume
+﻿# Ankesh Kumar - Personal Portfolio & Resume
 
 Welcome to the personal developer portfolio and resume codebase of **Ankesh Kumar**, Computer Science & Engineering Undergraduate (3rd Year) at **IES University** (CGPA: 8.55).
 
@@ -77,3 +77,4 @@ You can easily host this portfolio for free with your own URL:
   - B.Tech CSE (3rd Year), IES University (CGPA: 8.55)
   - Diploma in CSE, Govt. Polytechnic Mandi Adampur, Haryana (First Division)
   - Matriculation, Chinmaya Vidyalaya South Park, Bistupur, Jamshedpur (First Division)
+
