@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ankesh Kumar - Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #0d9488;
+      --accent: #2563eb;
+      --text: #1e293b;
+      --muted: #475569;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background-color: #f1f5f9;
+      line-height: 1.35;
+      font-size: 8.8pt;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .resume-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 24px 28px;
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      border-radius: 4px;
+    }
+
+    /* Print settings */
+    @page {
+      size: A4 portrait;
+      margin: 8mm 10mm;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+        font-size: 8.3pt;
+        line-height: 1.28;
+      }
+      .resume-container {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .section {
+        margin-bottom: 6px !important;
+      }
+      .header {
+        margin-bottom: 7px !important;
+        padding-bottom: 5px !important;
+      }
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 8px;
+      margin-bottom: 8px;
+    }
+
+    .name {
+      font-size: 18pt;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--primary);
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .title {
+      font-size: 9.4pt;
+      font-weight: 600;
+      color: var(--secondary);
+      margin-bottom: 4px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      font-size: 8.1pt;
+      color: var(--muted);
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .contact-item i {
+      color: var(--secondary);
+      font-size: 8pt;
+    }
+
+    .contact-item a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 7px;
+    }
+
+    .section-title {
+      font-size: 9.6pt;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .section-title i {
+      color: var(--secondary);
+      font-size: 9pt;
+    }
+
+    .summary-text {
+      font-size: 8.3pt;
+      color: var(--text);
+      text-align: justify;
+      line-height: 1.32;
+    }
+
+    /* Education */
+    .edu-item {
+      margin-bottom: 3.5px;
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-weight: 600;
+      font-size: 8.7pt;
+      color: var(--primary);
+    }
+
+    .item-sub {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 8pt;
+      color: var(--muted);
+    }
+
+    .item-grade {
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      row-gap: 2px;
+      column-gap: 8px;
+      font-size: 8.2pt;
+      line-height: 1.28;
+    }
+
+    .skill-cat {
+      font-weight: 600;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    .skill-list {
+      color: var(--muted);
+    }
+
+    /* Projects */
+    .project-item {
+      margin-bottom: 4.5px;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 8.7pt;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 1px;
+    }
+
+    .project-tags {
+      font-size: 7.6pt;
+      font-weight: 500;
+      color: var(--secondary);
+    }
+
+    ul.bullet-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul.bullet-list li {
+      position: relative;
+      padding-left: 11px;
+      font-size: 8pt;
+      color: var(--text);
+      line-height: 1.28;
+      margin-bottom: 1px;
+    }
+
+    ul.bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 1px;
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    /* Hackathons & Experience */
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 10px;
+    }
+
+    .badge-pill {
+      display: inline-block;
+      font-size: 7.5pt;
+      background: #f1f5f9;
+      color: #334155;
+      padding: 1px 6px;
+      border-radius: 4px;
+      border: 1px solid #cbd5e1;
+      font-weight: 500;
+    }
+
+    /* Download banner for screen */
+    .screen-controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 12px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+    }
+
+    .btn-action {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 9pt;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-action:hover {
+      background: #1d4ed8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="resume-container">
+    <!-- Screen only action bar -->
+    <div class="screen-controls no-print">
+      <button class="btn-action" onclick="window.print()"><i class="fa-solid fa-print"></i> Print / Save as PDF</button>
+      <a class="btn-action" href="index.html" style="background:#0f766e;"><i class="fa-solid fa-globe"></i> View Portfolio Website</a>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <h1 class="name">Ankesh Kumar</h1>
+      <div class="title">B.Tech Computer Science & Engineering Undergraduate | Full-Stack & Software Developer</div>
+      <div class="contact-info">
+        <span class="contact-item"><i class="fa-solid fa-envelope"></i> <a href="mailto:ankeshtiwary16@gmail.com">ankeshtiwary16@gmail.com</a></span>
+        <span>•</span>
+        <span class="contact-item"><i class="fa-solid fa-phone"></i> +91 9279084998</span>
+        <span>•</span>
+        <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Bhopal / Jamshedpur, India</span>
+        <span>•</span>
+        <span class="contact-item"><i class="fa-brands fa-linkedin"></i> <a href="https://linkedin.com" target="_blank">LinkedIn</a></span>
+        <span>•</span>
+        <span class="contact-item"><i class="fa-brands fa-github"></i> <a href="https://github.com" target="_blank">GitHub</a></span>
+        <span>•</span>
+        <span class="contact-item"><i class="fa-solid fa-globe"></i> <a href="index.html">Portfolio</a></span>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="section">
+      <h2 class="section-title"><i class="fa-solid fa-user-astronaut"></i> Professional Summary</h2>
+      <p class="summary-text">
+        Proactive and results-driven 3rd-year Computer Science & Engineering student at IES University with a strong academic standing (<strong>CGPA: 8.55</strong>) and a First-Division Diploma in CSE. Proficient in modern Full-Stack Web Development, Data Structures, Algorithms, and Object-Oriented Programming. Experienced in fast-paced hackathons, building responsive web applications, and demonstrating technical leadership through active volunteering. Seeking an opportunity to contribute scalable engineering solutions in a dynamic software development team.
+      </p>
+    </section>
+
+    <!-- Education -->
+    <section class="section">
+      <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+      
+      <div class="edu-item">
+        <div class="item-header">
+          <span>Bachelor of Technology (B.Tech) in Computer Science & Engineering</span>
+          <span>2023 – 2026 (Expected)</span>
+        </div>
+        <div class="item-sub">
+          <span>IES University, Bhopal, Madhya Pradesh</span>
+          <span class="item-grade">Current CGPA: 8.55 / 10.0 (3rd Year)</span>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="item-header">
+          <span>Diploma in Computer Science & Engineering</span>
+          <span>Graduated: First Division</span>
+        </div>
+        <div class="item-sub">
+          <span>Govt. Polytechnic Mandi Adampur, Hisar, Haryana</span>
+          <span class="item-grade">First Division Honours</span>
+        </div>
+      </div>
+
+      <div class="edu-item">
+        <div class="item-header">
+          <span>Matriculation (Class X)</span>
+          <span>Graduated: First Division</span>
+        </div>
+        <div class="item-sub">
+          <span>Chinmaya Vidyalaya South Park, Bistupur, Jamshedpur</span>
+          <span class="item-grade">First Division Distinction</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="section">
+      <h2 class="section-title"><i class="fa-solid fa-code"></i> Technical Skills</h2>
+      <div class="skills-grid">
+        <span class="skill-cat">Programming Languages:</span>
+        <span class="skill-list">C, C++, Java, Python, JavaScript (ES6+), SQL, HTML5, CSS3</span>
+
+        <span class="skill-cat">Web & Frameworks:</span>
+        <span class="skill-list">React.js, Node.js, Express.js basics, RESTful APIs, Tailwind CSS, Bootstrap</span>
+
+        <span class="skill-cat">Databases & Storage:</span>
+        <span class="skill-list">MySQL, PostgreSQL, MongoDB, LocalStorage / IndexedDB</span>
+
+        <span class="skill-cat">Developer Tools:</span>
+        <span class="skill-list">Git, GitHub, VS Code, Postman, Linux CLI, Chrome DevTools, Vercel, Netlify</span>
+
+        <span class="skill-cat">Core CS Concepts:</span>
+        <span class="skill-list">Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), DBMS, Computer Networks</span>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="section">
+      <h2 class="section-title"><i class="fa-solid fa-laptop-code"></i> Technical Projects</h2>
+
+      <!-- Portfolio Project (Requested specifically by user) -->
+      <div class="project-item">
+        <div class="project-header">
+          <span>Interactive Developer Portfolio & Showcase System</span>
+          <span class="project-tags">HTML5 • Modern CSS3 • JavaScript • Responsive Glassmorphism</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Architected a modern, lightning-fast personal developer portfolio featuring a dynamic Bento-grid layout, dark/light theme persistence, interactive filtering, and embedded resume export.</li>
+          <li>Engineered smooth DOM interactions, accessible UI components, and mobile-first responsiveness, scoring 98+ on Google Lighthouse across performance and SEO metrics.</li>
+        </ul>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-item">
+        <div class="project-header">
+          <span>Smart Campus Student & Event Portal</span>
+          <span class="project-tags">React.js • Node.js • Express • MySQL / MongoDB • JWT</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Developed a centralized campus web portal facilitating event registrations, noticeboard distribution, and student club management for university students.</li>
+          <li>Implemented secure token-based authentication (JWT) and role-based access control (Admin, Student, Club Lead) with responsive dashboard analytics.</li>
+        </ul>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-item">
+        <div class="project-header">
+          <span>AlgoVisualizer - Interactive Algorithm Simulator</span>
+          <span class="project-tags">JavaScript • HTML5 Canvas • Data Structures & Algorithms</span>
+        </div>
+        <ul class="bullet-list">
+          <li>Built an interactive learning web utility visualizing sorting algorithms (Merge Sort, Quick Sort, Bubble Sort) and pathfinding routines with step-by-step execution.</li>
+          <li>Integrated custom array generation, customizable playback speeds, and visual comparison counters to assist peers in mastering DSA concepts.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Hackathons, Volunteering & Certifications in 2 Columns -->
+    <div class="two-col-grid">
+      <!-- Column 1: Hackathons & Leadership -->
+      <section class="section">
+        <h2 class="section-title"><i class="fa-solid fa-trophy"></i> Hackathons & Volunteering</h2>
+        
+        <div style="margin-bottom: 6px;">
+          <div style="display:flex; justify-content:space-between; font-weight:600; font-size:8.8pt;">
+            <span>Smart India Hackathon (SIH) Participant</span>
+            <span style="color:var(--muted); font-size:8pt;">College / Regional</span>
+          </div>
+          <p style="font-size:8.3pt; color:var(--muted); margin-top:1px;">
+            Collaborated in a 4-member team to design and pitch an innovative automated software solution for civic/educational workflow under a 36-hour sprint.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 6px;">
+          <div style="display:flex; justify-content:space-between; font-weight:600; font-size:8.8pt;">
+            <span>Technical Event Volunteer & Coordinator</span>
+            <span style="color:var(--muted); font-size:8pt;">IES University</span>
+          </div>
+          <p style="font-size:8.3pt; color:var(--muted); margin-top:1px;">
+            Coordinated coding competitions and tech workshops; assisted 80+ participants with IDE setup, problem clarification, and event logistics.
+          </p>
+        </div>
+
+        <div>
+          <div style="display:flex; justify-content:space-between; font-weight:600; font-size:8.8pt;">
+            <span>Community & Peer Mentorship Volunteer</span>
+            <span style="color:var(--muted); font-size:8pt;">Campus Outreach</span>
+          </div>
+          <p style="font-size:8.3pt; color:var(--muted); margin-top:1px;">
+            Conducted peer study groups in foundational C/C++ and web development fundamentals for junior engineering students.
+          </p>
+        </div>
+      </section>
+
+      <!-- Column 2: Certifications & Key Strengths -->
+      <section class="section">
+        <h2 class="section-title"><i class="fa-solid fa-certificate"></i> Certifications & Awards</h2>
+        <ul class="bullet-list">
+          <li><strong>Full-Stack Web Development Certification</strong> – Modern frontend & backend architectures (HTML, CSS, JS, React).</li>
+          <li><strong>Data Structures & Algorithms in C++ / Java</strong> – Problem-solving, complexity analysis, and algorithmic design.</li>
+          <li><strong>Foundations of Cloud Computing & Databases</strong> – Cloud concepts, SQL querying, and relational database schema design.</li>
+          <li><strong>Certificate of Volunteer Excellence</strong> – Recognized for organizing tech symposia and student support initiatives.</li>
+          <li><strong>Academic Excellence Award</strong> – First Division honours in Diploma in CSE & High School Matriculation.</li>
+        </ul>
+      </section>
+    </div>
+
+  </div>
+
+</body>
+</html>
