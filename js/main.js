@@ -112,8 +112,9 @@ function initTypingEffect() {
   if (!typedEl) return;
 
   const words = [
-    'B.Tech CSE Student (8.55 CGPA)',
+    'B.Tech CSE (Lateral Entry 2025-28)',
     'Full-Stack Web Developer',
+    'Diploma in CSE (2022-25) Honours',
     'Hackathon Finalist & Innovator',
     'Tech Volunteer & Problem Solver',
     'Algorithms & DSA Enthusiast'
